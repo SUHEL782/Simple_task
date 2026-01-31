@@ -1,0 +1,33 @@
+name: Deploy Node App to EC2
+
+# Trigger on push to main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # CI: get code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # CI: install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # CD: deploy to EC2
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd Simple_task
+            git pull origin main
+            npm install
+            pm2 restart all || pm2 start app.js
