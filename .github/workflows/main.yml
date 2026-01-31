@@ -6,13 +6,14 @@ on:
       - main
 
 jobs:
-  # ---------------- JOB 1 ..----------------
+  # ---------------- JOB 1 ----------------
   install:
     name: Install Dependencies
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Install npm packages
         run: npm install
 
@@ -24,7 +25,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: npm install
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run tests
         run: echo "Tests passed ✅"
 
@@ -44,7 +48,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd node-ci-cd-app
+            cd /home/ubuntu/Simple_task
             git pull origin main
             npm install
             pm2 restart all || pm2 start index.js
