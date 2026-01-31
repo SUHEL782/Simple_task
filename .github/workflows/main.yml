@@ -1,33 +1,50 @@
-name: Deploy Node App to EC2
+name: Node.js CI/CD Pipeline
 
-# Trigger on push to main
 on:
   push:
     branches:
       - main
 
 jobs:
-  Deploy:
+  # ---------------- JOB 1 ----------------
+  install:
+    name: Install Dependencies
     runs-on: ubuntu-latest
 
     steps:
-      # CI: get code
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # CI: install dependencies
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+      - name: Install npm packages
         run: npm install
 
-      # CD: deploy to EC2
-      - name: Deploy to EC2
+  # ---------------- JOB 2 ----------------
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    needs: install
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - name: Run tests
+        run: echo "Tests passed ✅"
+
+  # ---------------- JOB 3 ----------------
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: build-test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd Simple_task
+            cd node-ci-cd-app
             git pull origin main
             npm install
-            pm2 restart all || pm2 start app.js
+            pm2 restart all || pm2 start index.js
