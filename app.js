@@ -54,7 +54,8 @@ const html = `
   <div class="card">
     <h1> Node.js Docker App</h1>
     <p>Your application is running successfully inside a Docker container.</p>
-    <div class="badge">Docker Container Running</div>
+    <div class="badge">Docker Container Running on Top</div>
+    <div class="badge">Thanks</div>
     <p style="margin-top: 25px; font-size: 14px;">
       Port: ${PORT}
     </p>
