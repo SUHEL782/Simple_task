@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: echo "Tests passed ✅"
+        run: echo "Tests passed "
 
   # ---------------- JOB 3 ----------------
   deploy:
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: suhel/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
