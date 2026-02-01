@@ -53,7 +53,7 @@ const html = `
 <body>
   <div class="card">
     <h4>Good morning! ...</h4>
-    <h1> Node.js Docker App</h1>
+    <h2> Node.js Application..</h2>
     <p>Your application is running successfully inside a Docker container.</p>
     <div class="badge">Docker Container Running</div>
     <h3> ThankYou!</h3>
