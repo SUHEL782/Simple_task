@@ -7,7 +7,7 @@ const html = `
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Docker Test App</title>
+  <title>Application</title>
   <style>
     body {
       margin: 0;
