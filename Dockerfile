@@ -22,4 +22,4 @@ EXPOSE 3000
 
 # run app
 
-CMD ["npx" ,"nodemon"]
+CMD ["npm" ,"start"]
