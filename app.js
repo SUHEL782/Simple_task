@@ -54,7 +54,7 @@ const html = `
   <div class="card">
     <h4>Good morning! ...</h4>
     <h2> Node.js Application..</h2>
-    <p>Your application is running successfully inside a Docker container.</p>
+    <p>My application is running successfully inside a Docker container.</p>
     <div class="badge">Docker Container Running</div>
     <h3>Suhel khan!</h3>
    </div>
