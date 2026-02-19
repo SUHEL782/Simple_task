@@ -56,7 +56,6 @@ const html = `
     <h2> Node.js Application..</h2>
     <p>Your application is running successfully inside a Docker container.</p>
     <div class="badge">Docker Container Running</div>
-    <h3> ThankYou! EveryOne..</h3>
     <h3>Suhel khan!</h3>
    </div>
 </body>
